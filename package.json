@@ -19,3 +19,6 @@
     "pg": "^8.20.0"
   }
 }
+"scripts": {
+    "start": "node server2.js"
+}
