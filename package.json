@@ -2,7 +2,7 @@
   "name": "my-express-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server2.js",
   "scripts": {
     "start": "node server2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
