@@ -1,5 +1,13 @@
 require("dotenv").config()
 
+const rateLimit = require("express-rate-limit")
+
+const loginLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 10, // max 10 attempts per 15 minutes
+    message: { message: "Too many login attempts, try again in 15 minutes" }
+})
+
 const express = require("express")
 const pool = require("./db")
 const app = express()
@@ -79,8 +87,12 @@ app.delete("/users/:id", async (req, res) => {
 })
 
 const authRoutes = require("./auth")
+
+app.use("/auth/login", loginLimiter)
 app.use("/auth", authRoutes)
 
-app.listen(3000, () => {
-    console.log("Server connected to database and running on port 3000")
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
 })
