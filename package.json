@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,7 +19,4 @@
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.20.0"
   }
-}
-"scripts": {
-    "start": "node server2.js"
 }
