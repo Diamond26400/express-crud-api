@@ -21,9 +21,11 @@ app.get("/users", async (req, res) => {
         const result = await pool.query("SELECT * FROM users")
         res.json(result.rows)
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        console.error("DB ERROR:", error)
+        res.status(500).json({ message: error.message, detail: error.detail, code: error.code })
     }
 })
+
 
 // POST - add a new user to database
 app.post("/users", async (req, res) => {
