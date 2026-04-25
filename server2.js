@@ -1,5 +1,6 @@
-require("dotenv").config()
-
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config()
+}
 const rateLimit = require("express-rate-limit")
 
 const loginLimiter = rateLimit({
@@ -92,6 +93,9 @@ app.use("/auth/login", loginLimiter)
 app.use("/auth", authRoutes)
 
 const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+})
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
